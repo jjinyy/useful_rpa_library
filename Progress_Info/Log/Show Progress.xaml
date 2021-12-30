@@ -1,0 +1,202 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ShowProgress" this:ShowProgress.InfoText="안ㄴㅇㅇㅇㅇㅇ" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Diagnostics;assembly=System" xmlns:swf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="InfoText" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1114,2263</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ShowProgress_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="56">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Annotations</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Management</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Management</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="- 표시할 텍스트 출력" DisplayName="Show Progress" sap:VirtualizedContainerService.HintSize="684,2098" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="i_line" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap:VirtualizedContainerService.HintSize="642,152" sap2010:WorkflowViewState.IdRef="Sequence_9">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[i_line]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[Split(InfoText, vbNewLine).Length]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <Sequence sap:VirtualizedContainerService.HintSize="642,1416" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="sd:Process" Name="s_test" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="System.Windows.Forms.Application.Exit()&#xA;button = New System.Windows.Forms.Button()&#xA;button.Text = &quot;ok&quot;&#xA;button.AutoSize = True&#xA;&#xA;label = New System.Windows.Forms.Label()&#xA;label.AutoSize = True&#xA;label.Font = New Font(&quot;맑은 고딕&quot;, 10, FontStyle.Regular)&#xA;label.Text = s_progressText&#xA;form= New System.Windows.forms.form&#xA;form.Text=&quot;Hansol RPA&quot;&#xA;form.BackColor = Color.White&#xA;form.TopMost = True&#xA;form.ClientSize = New System.Drawing.Size(300, 26*i_line)&#xA;form.StartPosition = FormStartPosition.Manual&#xA;form.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width - form.Width, Screen.PrimaryScreen.WorkingArea.Height - form.Height)&#xA;&#xA;form.Controls.Add(label)&#xA;form.Controls.add(button)&#xA;form.Show()&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="600,164" sap2010:WorkflowViewState.IdRef="InvokeCode_12">
+        <ui:InvokeCode.Arguments>
+          <InOutArgument x:TypeArguments="x:String" x:Key="s_progressText">[InfoText]</InOutArgument>
+          <InArgument x:TypeArguments="swf:Label" x:Key="label" />
+          <InArgument x:TypeArguments="swf:Form" x:Key="form" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="i_line">[i_line]</InArgument>
+          <InArgument x:TypeArguments="swf:Button" x:Key="button" />
+        </ui:InvokeCode.Arguments>
+      </ui:InvokeCode>
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="System.Windows.Forms.Application.Exit()&#xA;button = New System.Windows.Forms.Button()&#xA;button.Text = &quot;ok&quot;&#xA;button.AutoSize = True&#xA;&#xA;label = New System.Windows.Forms.Label()&#xA;label.AutoSize = True&#xA;label.Font = New Font(&quot;맑은 고딕&quot;, 10, FontStyle.Regular)&#xA;label.Text = s_progressText&#xA;form= New System.Windows.forms.form&#xA;form.Text=&quot;Hansol RPA&quot;&#xA;form.BackColor = Color.White&#xA;form.TopMost = True&#xA;form.ClientSize = New System.Drawing.Size(300, 26*i_line)&#xA;form.StartPosition = FormStartPosition.Manual&#xA;form.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width - form.Width, Screen.PrimaryScreen.WorkingArea.Height - form.Height)&#xA;&#xA;form.Controls.Add(label)&#xA;form.Controls.add(button)&#xA;form.Show()&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="600,164" sap2010:WorkflowViewState.IdRef="InvokeCode_4">
+        <ui:InvokeCode.Arguments>
+          <InOutArgument x:TypeArguments="x:String" x:Key="s_progressText">[InfoText]</InOutArgument>
+          <InArgument x:TypeArguments="swf:Label" x:Key="label" />
+          <InArgument x:TypeArguments="swf:Form" x:Key="form" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="i_line">[i_line]</InArgument>
+          <InArgument x:TypeArguments="swf:Button" x:Key="button" />
+        </ui:InvokeCode.Arguments>
+      </ui:InvokeCode>
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="600,916" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch.Try>
+          <ui:ForEach x:TypeArguments="sd:Process" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="562,689" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Process.GetProcesses]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="sd:Process">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:Process" Name="item" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="526,555" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[item.ProcessName = &quot;UiPath.Executor&quot;]" sap:VirtualizedContainerService.HintSize="484,362" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="sd:Process">[s_test]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="sd:Process">[item]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="[item.ProcessName]" />
+                      </Sequence>
+                    </If.Then>
+                  </If>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[item.ProcessName]" />
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEach>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="566,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+              </ActivityAction.Argument>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="231,61" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="종료성공!" />
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+    </Sequence>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="System.Windows.Forms.Application.Exit()&#xA;button = New System.Windows.Forms.Button()&#xA;button.Text = &quot;ok&quot;&#xA;&#xA;label = New System.Windows.Forms.Label()&#xA;label.AutoSize = True&#xA;label.Font = New Font(&quot;맑은 고딕&quot;, 10, FontStyle.Regular)&#xA;label.Text = s_progressText&#xA;&#xA;form= New System.Windows.forms.form&#xA;form.Text=&quot;Hansol RPA&quot;&#xA;form.BackColor = Color.White&#xA;form.TopMost = True&#xA;form.ClientSize = New System.Drawing.Size(300, 26*i_line)&#xA;form.StartPosition = FormStartPosition.Manual&#xA;form.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width - form.Width, Screen.PrimaryScreen.WorkingArea.Height - form.Height)&#xA;form.Controls.Add(label)&#xA;form.Controls.Add(button)&#xA;form.Show()" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="642,164" sap2010:WorkflowViewState.IdRef="InvokeCode_9">
+      <ui:InvokeCode.Arguments>
+        <InOutArgument x:TypeArguments="x:String" x:Key="s_progressText">[InfoText]</InOutArgument>
+        <InArgument x:TypeArguments="swf:Label" x:Key="label" />
+        <InArgument x:TypeArguments="swf:Form" x:Key="form" />
+        <InArgument x:TypeArguments="x:Int32" x:Key="i_line">[i_line]</InArgument>
+        <InArgument x:TypeArguments="sd:Process" x:Key="process" />
+        <InArgument x:TypeArguments="swf:Button" x:Key="button" />
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="642,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[InfoText]" />
+    <Delay Duration="00:10:00" sap:VirtualizedContainerService.HintSize="642,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+  </Sequence>
+</Activity>

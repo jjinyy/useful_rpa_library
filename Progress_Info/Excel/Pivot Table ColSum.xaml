@@ -1,0 +1,177 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="PivotTable_ColSum" this:PivotTable_ColSum.PivotSheet="PivotSum" this:PivotTable_ColSum.ColName2="false" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="PivotType" Type="InArgument(x:String)" />
+    <x:Property Name="ExcelPath" Type="InArgument(x:String)" />
+    <x:Property Name="SheetName" Type="InArgument(x:String)" />
+    <x:Property Name="PivotSheet" Type="InArgument(x:String)" />
+    <x:Property Name="TargetName" Type="InArgument(x:String)" />
+    <x:Property Name="ColName2" Type="InArgument(x:String)" />
+    <x:Property Name="ColName1" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>990,917</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>PivotTable_ColSum_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="PivotTable_ColSum" sap:VirtualizedContainerService.HintSize="539,752" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="i_rowCnt" />
+      <Variable x:TypeArguments="x:Int32" Name="i_colCnt" />
+      <Variable x:TypeArguments="x:String" Name="s_col" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_originTable" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="497,460" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Visible="False" WorkbookPath="[ExcelPath]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="376,351" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_originTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[SheetName]">
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+            </ui:ExcelReadRange>
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[i_rowCnt]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[dt_originTable.Rows.Count + 2]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[s_col]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Convert.ToChar(dt_originTable.Columns.Count + 65) + i_rowCnt.ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[PivotType]" sap:VirtualizedContainerService.HintSize="497,160" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Switch.Default>
+        <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim excel As Microsoft.Office.Interop.Excel.Application&#xA; Dim wb As Microsoft.Office.Interop.Excel.Workbook&#xA; &#xA; Dim ws As Microsoft.Office.Interop.Excel.Worksheet&#xA;  Dim p_ws As Microsoft.Office.Interop.Excel.Worksheet&#xA; Dim rng As Microsoft.Office.Interop.Excel.Range 'capturing the range of sheet1 '''&#xA; Dim p_rng As Microsoft.Office.Interop.Excel.Range 'capturing the range of pivottable shhet1''&#xA; Try&#xA; excel = New Microsoft.Office.Interop.Excel.ApplicationClass'create the instance of excel work book'&#xA;&#xA; wb = excel.Workbooks.Open(s_pathExcel)'Open the excel the file'&#xA; excel.Visible=True&#xA;&#xA; ws=CType(wb.Sheets(s_sheetName),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA; ws.Activate&#xA; &#xA;rng=ws.Range(&quot;A1&quot;, s_col)'Selects the given range of sheet 1'&#xA;&#xA; p_ws=CType(wb.Sheets.Add,Microsoft.Office.Interop.Excel.Worksheet)'create a empty and and name the sheet as pivot table'&#xA; p_ws=CType(wb.Sheets(&quot;Sheet1&quot;),Microsoft.Office.Interop.Excel.Worksheet)'create a empty and and name the sheet as pivot table'&#xA; p_ws.Name = s_pivotSheet&#xA; &#xA;  p_rng= CType(p_ws.Cells(1,1),Microsoft.Office.Interop.Excel.Range) 'Specify the first cell for the pivot table'&#xA; &#xA; 'Creation pivot Cache and pivot table '&#xA; Dim oPivotCache As Microsoft.Office.Interop.Excel.PivotCache=Nothing&#xA; Dim oPivotTables As Microsoft.Office.Interop.Excel.PivotTables=Nothing&#xA; Dim oPivotTable As Microsoft.Office.Interop.Excel.PivotTable=Nothing&#xA; &#xA; oPivotCache=CType(wb.PivotCaches().Add(Microsoft.Office.Interop.Excel.XlPivotTableSourceType.xlDatabase,rng),Microsoft.Office.Interop.Excel.PivotCache)&#xA; oPivotTables=DirectCast(p_ws.PivotTables(Type.Missing),Microsoft.Office.Interop.Excel.PivotTables)&#xA; oPivotTable=oPivotTables.Add(oPivotCache,p_rng,&quot;Sum&quot;,Type.Missing,Type.Missing)'first paramenter is cache,range the table should start,table name'&#xA;&#xA; 'Creation of pivot Fields'&#xA; &#xA; Dim oPivotField As Microsoft.Office.Interop.Excel.PivotField=Nothing&#xA; &#xA;  oPivotField=CType(oPivotTable.PivotFields(s_targetName),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA; oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlRowField&#xA; &#xA;  oPivotField=CType(oPivotTable.PivotFields(s_colName1),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA;  oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlDataField&#xA; oPivotField.Function=Microsoft.Office.Interop.Excel.XlConsolidationFunction.xlSum&#xA; &#xA;    oPivotField=CType(oPivotTable.PivotFields(s_colName2),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA;&#x9;oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlDataField&#xA; oPivotField.Function=Microsoft.Office.Interop.Excel.XlConsolidationFunction.xlSum&#xA;&#xA;   oPivotField=CType(oPivotTable.PivotFields(&quot;Data&quot;),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA;  oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlColumnField&#xA;  &#xA; wb.Save()&#xA; wb.Close()&#xA;&#xA;Catch es As Exception&#xA; 'System.Windows.MessageBox.Show(es.Message)'&#xA;End Try&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
+          <ui:InvokeCode.Arguments>
+            <InArgument x:TypeArguments="x:Int32" x:Key="i_rowCnt">[i_rowCnt]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="s_pathExcel">[ExcelPath]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="s_sheetName">[SheetName]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="s_colName1">[ColName1]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="s_colName2">[ColName2]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="s_col">[s_col]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="s_pivotSheet">[PivotSheet]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="s_targetName">[TargetName]</InArgument>
+          </ui:InvokeCode.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeCode>
+      </Switch.Default>
+      <ui:InvokeCode ContinueOnError="{x:Null}" x:Key="false" Code="Dim excel As Microsoft.Office.Interop.Excel.Application&#xA; Dim wb As Microsoft.Office.Interop.Excel.Workbook&#xA; &#xA; Dim ws As Microsoft.Office.Interop.Excel.Worksheet&#xA;  Dim p_ws As Microsoft.Office.Interop.Excel.Worksheet&#xA; Dim rng As Microsoft.Office.Interop.Excel.Range 'capturing the range of sheet1 '''&#xA; Dim p_rng As Microsoft.Office.Interop.Excel.Range 'capturing the range of pivottable shhet1''&#xA; Try&#xA; excel = New Microsoft.Office.Interop.Excel.ApplicationClass'create the instance of excel work book'&#xA;&#xA; wb = excel.Workbooks.Open(s_pathExcel)'Open the excel the file'&#xA; excel.Visible=True&#xA;&#xA; ws=CType(wb.Sheets(s_sheetName),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA; ws.Activate&#xA; &#xA;rng=ws.Range(&quot;A1&quot;, s_col)'Selects the given range of sheet 1'&#xA;&#xA; p_ws=CType(wb.Sheets.Add,Microsoft.Office.Interop.Excel.Worksheet)'create a empty and and name the sheet as pivot table'&#xA; p_ws=CType(wb.Sheets(&quot;Sheet1&quot;),Microsoft.Office.Interop.Excel.Worksheet)'create a empty and and name the sheet as pivot table'&#xA; p_ws.Name = s_pivotSheet&#xA; &#xA;  p_rng= CType(p_ws.Cells(1,1),Microsoft.Office.Interop.Excel.Range) 'Specify the first cell for the pivot table'&#xA; &#xA; 'Creation pivot Cache and pivot table '&#xA; Dim oPivotCache As Microsoft.Office.Interop.Excel.PivotCache=Nothing&#xA; Dim oPivotTables As Microsoft.Office.Interop.Excel.PivotTables=Nothing&#xA; Dim oPivotTable As Microsoft.Office.Interop.Excel.PivotTable=Nothing&#xA; &#xA; oPivotCache=CType(wb.PivotCaches().Add(Microsoft.Office.Interop.Excel.XlPivotTableSourceType.xlDatabase,rng),Microsoft.Office.Interop.Excel.PivotCache)&#xA; oPivotTables=DirectCast(p_ws.PivotTables(Type.Missing),Microsoft.Office.Interop.Excel.PivotTables)&#xA; oPivotTable=oPivotTables.Add(oPivotCache,p_rng,&quot;Sum&quot;,Type.Missing,Type.Missing)'first paramenter is cache,range the table should start,table name'&#xA;&#xA; 'Creation of pivot Fields'&#xA; &#xA; Dim oPivotField As Microsoft.Office.Interop.Excel.PivotField=Nothing&#xA; &#xA;  oPivotField=CType(oPivotTable.PivotFields(s_targetName),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA; oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlRowField&#xA; &#xA;  oPivotField=CType(oPivotTable.PivotFields(s_colName1),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA;  oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlDataField&#xA; oPivotField.Function=Microsoft.Office.Interop.Excel.XlConsolidationFunction.xlSum&#xA;&#xA; wb.Save()&#xA; wb.Close()&#xA;&#xA;Catch es As Exception&#xA; 'System.Windows.MessageBox.Show(es.Message)'&#xA;End Try&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
+        <ui:InvokeCode.Arguments>
+          <InArgument x:TypeArguments="x:Int32" x:Key="i_rowCnt">[i_rowCnt]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_pathExcel">[ExcelPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_sheetName">[SheetName]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_colName1">[ColName1]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_col">[s_col]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_pivotSheet">[PivotSheet]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_targetName">[TargetName]</InArgument>
+        </ui:InvokeCode.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeCode>
+      <ui:InvokeCode ContinueOnError="{x:Null}" x:Key="Average" Code="Dim excel As Microsoft.Office.Interop.Excel.Application&#xA; Dim wb As Microsoft.Office.Interop.Excel.Workbook&#xA; &#xA; Dim ws As Microsoft.Office.Interop.Excel.Worksheet&#xA;  Dim p_ws As Microsoft.Office.Interop.Excel.Worksheet&#xA; Dim rng As Microsoft.Office.Interop.Excel.Range 'capturing the range of sheet1 '''&#xA; Dim p_rng As Microsoft.Office.Interop.Excel.Range 'capturing the range of pivottable shhet1''&#xA; Try&#xA; excel = New Microsoft.Office.Interop.Excel.ApplicationClass'create the instance of excel work book'&#xA;&#xA; wb = excel.Workbooks.Open(s_pathExcel)'Open the excel the file'&#xA; excel.Visible=True&#xA;&#xA; ws=CType(wb.Sheets(s_sheetName),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA; ws.Activate&#xA; &#xA;rng=ws.Range(&quot;A1&quot;, s_col)'Selects the given range of sheet 1'&#xA;&#xA; p_ws=CType(wb.Sheets.Add,Microsoft.Office.Interop.Excel.Worksheet)'create a empty and and name the sheet as pivot table'&#xA; p_ws=CType(wb.Sheets(&quot;Sheet1&quot;),Microsoft.Office.Interop.Excel.Worksheet)'create a empty and and name the sheet as pivot table'&#xA; p_ws.Name = s_pivotSheet&#xA; &#xA;  p_rng= CType(p_ws.Cells(1,1),Microsoft.Office.Interop.Excel.Range) 'Specify the first cell for the pivot table'&#xA; &#xA; 'Creation pivot Cache and pivot table '&#xA; Dim oPivotCache As Microsoft.Office.Interop.Excel.PivotCache=Nothing&#xA; Dim oPivotTables As Microsoft.Office.Interop.Excel.PivotTables=Nothing&#xA; Dim oPivotTable As Microsoft.Office.Interop.Excel.PivotTable=Nothing&#xA; &#xA; oPivotCache=CType(wb.PivotCaches().Add(Microsoft.Office.Interop.Excel.XlPivotTableSourceType.xlDatabase,rng),Microsoft.Office.Interop.Excel.PivotCache)&#xA; oPivotTables=DirectCast(p_ws.PivotTables(Type.Missing),Microsoft.Office.Interop.Excel.PivotTables)&#xA; oPivotTable=oPivotTables.Add(oPivotCache,p_rng,&quot;Sum&quot;,Type.Missing,Type.Missing)'first paramenter is cache,range the table should start,table name'&#xA;&#xA; 'Creation of pivot Fields'&#xA; &#xA; Dim oPivotField As Microsoft.Office.Interop.Excel.PivotField=Nothing&#xA; &#xA;  oPivotField=CType(oPivotTable.PivotFields(s_targetName),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA; oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlRowField&#xA; &#xA;  oPivotField=CType(oPivotTable.PivotFields(s_colName1),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA;  oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlDataField&#xA; oPivotField.Function=Microsoft.Office.Interop.Excel.XlConsolidationFunction.xlSum&#xA; &#xA;    oPivotField=CType(oPivotTable.PivotFields(s_colName2),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA;&#x9;oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlDataField&#xA; oPivotField.Function=Microsoft.Office.Interop.Excel.XlConsolidationFunction.xlAverage&#xA;&#xA;    oPivotField=CType(oPivotTable.PivotFields(&quot;Data&quot;),Microsoft.Office.Interop.Excel.PivotField)'Specfiy the coulmn name'&#xA;  oPivotField.Orientation=Microsoft.Office.Interop.Excel.XlPivotFieldOrientation.xlColumnField&#xA; &#xA; wb.Save()&#xA; wb.Close()&#xA;&#xA;Catch es As Exception&#xA; 'System.Windows.MessageBox.Show(es.Message)'&#xA;End Try&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_4">
+        <ui:InvokeCode.Arguments>
+          <InArgument x:TypeArguments="x:Int32" x:Key="i_rowCnt">[i_rowCnt]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_pathExcel">[ExcelPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_sheetName">[SheetName]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_colName1">[ColName1]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_colName2">[ColName2]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_col">[s_col]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_pivotSheet">[PivotSheet]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="s_targetName">[TargetName]</InArgument>
+        </ui:InvokeCode.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeCode>
+    </Switch>
+  </Sequence>
+</Activity>
